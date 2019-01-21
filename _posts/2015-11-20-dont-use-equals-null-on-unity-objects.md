@@ -56,7 +56,7 @@ When you call `Destroy(obj)` on a Unity object the C++ engine destroys the nativ
 
 Using the overloaded `==` and thinking of destroyed objects as null usually works fine. Until you do something like pass a `MonoBehavior` or `GameObject` to a method like...
 
-```language-cs
+```csharp
 void Asset.IsNotNull(object obj, string message) {
     if (obj == null) 
         Debug.LogErrorFormat("Assert Null: " + message);
@@ -75,7 +75,7 @@ When you regularly think, as Unity encourages, of a destroyed object as `null`, 
 
 Just don't do it. Be aware that Destoyed isn't null. Think of `GameObject`s and other `UnityEngine.Object`s like containers, like `string`s, or `List`s. Remember that before you can do operations on those you have to do something like...
 
-```language-cs
+```csharp
 if (!string.IsNullOrEmpty(name)) \\...
 // or...
 if (list != null && list.Count > 0) \\...
@@ -83,7 +83,7 @@ if (list != null && list.Count > 0) \\...
 
 Honestly, I wish the Unity interfaces didn't hide the fact that destroyed objects are different from null references from you. I wish the canonical way of expressing this was something more standard like:
 
-```language-cs
+```csharp
 if (gameObject != null && gameObject.IsValid) \\...
 ```
 
@@ -92,7 +92,7 @@ Which although verbose, makes the behavior clear, and seeing it makes the above 
 In lieu of that, `UnityEngine.Object` does implement an implicit conversion to bool, which I always use over equality to null. The benifit of that (besides being shorter) is `if (obj)` won't compile for regular `object` references, since most C# objects don't implement that implicit conversion, stopping you from making the mistake with the asset, where you've cast to object somewhere.
 
 So for the Asset, use something like:
-```language-cs
+```csharp
 void Asset.IsValid(UnityEngine.Object obj, string message) {
     if (!obj) 
         Debug.LogErrorFormat("Assert Missing: " + message);
@@ -101,7 +101,7 @@ void Asset.IsValid(UnityEngine.Object obj, string message) {
 
 And remember to try to diligently null out your object references after you destroy them to prevent unexpected memory leaks, and if you do need to check a Unity object reference for validity before accessing built-in properties, use:
 
-```language-cs
+```csharp
 // not != null
 if (customMonoBehavior) {
     customMonoBehavior.enabled = false;
