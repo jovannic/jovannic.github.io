@@ -95,7 +95,7 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: $base-font-weight;
+  font-weight: 400;
 }
 
 
@@ -150,9 +150,9 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
+  border: 2px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: #0f0f0f;
 }
 
 code {
