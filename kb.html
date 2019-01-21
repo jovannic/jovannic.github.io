@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Random Keys</title>
+<!--<link rel="stylesheet" href="style.css">-->
+<style>
+.linefeed {
+	font-family: Consolas, "Lucida Console", Monaco, monospace;
+	font-size: 70px;
+	letter-spacing: 0.1em;
+}
+.linefeed .wasted {
+	background-color: #FCC;
+	color: #FFF;
+}
+.linefeed .current {
+	background-color: #CCC;
+	color: #FFF;
+	padding-left: 0.1em;
+}
+.linefeed .leading, .instruction {
+	color: #CCC;
+}
+.linefeed .trailing {
+	padding-left: -0.1em
+}
+.keyboard { display: inline-block; border: 1px solid #CCC; font-family: "Consolas", "Lucida Console", Monaco, monospace; font-weight: bold; color:#CCC; white-space:nowrap; font-size:16px; }
+.keyboardRow { text-align:center; vertical-align: middle; }
+.key { box-sizing: border-box; display:inline-block; border:1px solid #CCC; width: 40px; height: 40px; padding-top: 0px; margin:0px; background-color: white; float:left; line-height:40px; }
+.key.k150 { width: 60px }
+.key.k175 { width: 70px }
+.key.k225 { width: 90px }
+.key.k275 { width: 110px }
+.key.spacebar { width: 300px; }
+.key.dub { padding-top:4px; line-height:100%;  font-size:15px; }
+
+/* pinky (f1) to index (f4), e = extended/stretch */
+.key.f1.e { background-color:#fffcfc;}
+.key.f1 { background-color:#fff5f5;}
+.key.f2 { background-color:#ffe7db;}
+.key.f3 { background-color:#fff5dd;}
+.key.f4 { background-color:#deffd5;}
+.key.f4.e { background-color:#ebffe6;}
+
+.keyboard sup, .keyboard sub {
+   vertical-align: baseline;
+   position: relative;
+   top: -0.4em;
+}
+.keyboard sub { top: 0.4em; }
+</style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+	<!-- page content -->
+	<div style="text-align:center;">
+		<div id="instruction" class="instruction">&nbsp;</div>
+		<div id="linefeed" class="linefeed" style="white-space: nowrap">
+			<span id="trailing" class="trailing"></span><span id="wasted" class="wasted"></span><span id="current" class="current">---</span><span id="leading" class="leading"></span>
+		</div>
+		<div>&nbsp;</div>
+		<div class="keyboard"
+		    ><div class="keyboardRow"
+		    ><span class="key dub f1 l e">~<br>`</span
+		    ><span class="key dub f1 l">!<br>1</span
+		    ><span class="key dub f2 l">@<br>2</span
+		    ><span class="key dub f3 l">#<br>3</span
+		    ><span class="key dub f4 l">$<br>4</span
+		    ><span class="key dub f4 l e">%<br>5</span
+		    ><span class="key dub f4 r e">^<br>6</span
+		    ><span class="key dub f4 r">&amp;<br>7</span
+		    ><span class="key dub f3 r">*<br>8</span
+		    ><span class="key dub f2 r">(<br>9</span
+		    ><span class="key dub f1 r">)<br>0</span
+		    ><span class="key dub f1 r e">_<br>-</span
+		    ><span class="key dub f1 r e">+<br>=</span
+		    ><span class="key k150 r">Back</span
+		    ></div
+		    ><div class="keyboardRow"
+		    ><span class="key l k150">Tab</span
+		    ><span class="key f1 l">Q</span
+		    ><span class="key f2 l">W</span
+		    ><span class="key f3 l">E</span
+		    ><span class="key f4 l">R</span
+		    ><span class="key f4 l e">T</span
+		    ><span class="key f4 r e">Y</span
+		    ><span class="key f4 r">U</span
+		    ><span class="key f3 r">I</span
+		    ><span class="key f2 r">O</span
+		    ><span class="key f1 r">P</span
+		    ><span class="key f1 r e dub">{<br>[</span
+		    ><span class="key f1 r e dub">}<br>]</span
+		    ><span class="key f1 r e dub">|<br>\</span
+		    ></div
+		    ><div class="keyboardRow"
+		    ><span class="key l k175">Caps</span
+		    ><span class="key f1 l">A</span
+		    ><span class="key f2 l">S</span
+		    ><span class="key f3 l">D</span
+		    ><span class="key f4 l">F</span
+		    ><span class="key f4 l e">G</span
+		    ><span class="key f4 r e">H</span
+		    ><span class="key f4 r">J</span
+		    ><span class="key f3 r">K</span
+		    ><span class="key f2 r">L</span
+		    ><span class="key f1 r dub">:<br>;</span
+		    ><span class="key f1 r e dub">"<br>'</span
+		    ><span class="key r k175">Enter</span
+		    ></div
+		    ><div class="keyboardRow"
+		    ><span class="key l k225">Shift</span
+		    ><span class="key f1 l">Z</span
+		    ><span class="key f2 l">X</span
+		    ><span class="key f3 l">C</span
+		    ><span class="key f4 l">V</span
+		    ><span class="key f4 l e">B</span
+		    ><span class="key f4 r e">N</span
+		    ><span class="key f4 r">M</span
+		    ><span class="key f3 r dub">&lt;<br>,</span
+		    ><span class="key f2 r dub">&gt;<br>.</span
+		    ><span class="key f1 r dub">?<br>/</span
+		    ><span class="key r k225">Shift</span
+		    ></div
+		    ><div class="keyboardRow"
+		    ><span class="key l k150">Ctrl</span
+		    ><span class="key l k125"></span
+		    ><span class="key l k125">Alt</span
+		    ><span class="key spacebar">Space</span
+		    ><span class="key r k125">Alt</span
+		    ><span class="key r"></span
+		    ><span class="key r k150">Ctrl</span
+		    ></div
+		></div>
+	</div>
+</body>
+<script type="text/javascript">
+'use strict';
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, '&amp;')
+         .replace(/</g, '&lt;')
+         .replace(/>/g, '&gt;')
+         .replace(/"/g, '&quot;')
+         .replace(/'/g, '&#039;');
+}
+function repeat(str, count) {
+	var out = '';
+	for (; count > 0; count--)
+		out += str;
+	return out;
+}
+function substitute(str) {
+	return substitutions[str] !== undefined ? substitutions[str] : str;
+}
+function getSpecial(str) {
+	return specialNames[str] !== undefined ? specialNames[str] : '&nbsp;';
+}
+
+var specialNames = {
+	'\\': 'backslash', '/': 'slash', '(': 'open', ')': 'close',
+	'`': 'backtick', '\'' : 'apostrophe', ' ': 'space',
+	'!': '^1', '@': '^2', '#': '^3', '$': '^4', 
+	'%': '^5', '^': '^6', '&': '^7', '*': '^8'
+	};
+var substitutions = {'\n': '&nbsp;', '\r': '&nbsp;', ' ': '&nbsp'};
+
+var nextPool = 'abcdefghijklmnopqrstuvwxyz124567890_+!@#$%^&*()[]{}\\|;:\'",<.>/? ';
+var nextShown = 5; // int, must be greater than 0
+var wastedShown = 5;
+
+var nextChars = [];
+var wasted = [];
+
+var streak = 0;
+
+// TODO: show past, including mistakes, backspacing
+
+
+function randChar() {
+	return nextPool.charAt(Math.random() * nextPool.length);
+}
+
+function fillNext() {
+	while (nextChars.length < nextShown + 1)
+		nextChars.push(randChar());
+}
+
+function fillStr(str) {
+	for (var i = 0; i < str.length; i++) {
+		nextChars.push(str.charAt(i));
+	}
+}
+
+function advance() {
+	nextChars.shift();
+	fillNext();
+	wasted.length = 0; // reset
+	
+	update();
+}
+
+function update() {
+	var nextHTML = nextChars.slice(0, nextShown + 1).map(escapeHtml).map(substitute);
+	var wastedHTML = wasted.slice(-wastedShown).map(escapeHtml).map(substitute);
+
+	document.getElementById('trailing').innerHTML = repeat('&nbsp;', nextShown - wastedHTML.length);
+	document.getElementById('wasted').innerHTML = wastedHTML.join('');
+	document.getElementById('current').innerHTML = nextHTML[0];
+	document.getElementById('leading').innerHTML = nextHTML.slice(1).join('') + 
+		repeat('&nbsp;', Math.max(0, wastedHTML.length - nextShown));
+
+	document.getElementById('instruction').innerHTML = getSpecial(nextChars[0]);
+}
+
+document.addEventListener('keydown', function(event) {
+	if (event.keyCode == 8) {
+		wasted.pop();
+		update();
+		event.preventDefault();
+	}
+});
+
+document.addEventListener('keypress', function(event) {
+	if (event.keyCode == 8 || event.keyCode == 32) {
+		event.preventDefault();
+	}
+	
+	var charcode = event.charCode;
+	if (charcode == nextChars[0].charCodeAt(0)) {
+		streak++;
+		advance();
+	} else if (charcode == nextChars[1].charCodeAt(0)) {
+		streak = 0;
+		advance();
+		advance();
+	} else {
+		streak = 0;
+		wasted.push(String.fromCharCode(charcode));
+		
+		update();
+	}
+}, true);
+
+advance();
+</script>
+</html>
