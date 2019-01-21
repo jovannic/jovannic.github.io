@@ -2,7 +2,6 @@
 layout: post
 title: Don't Use == null On Unity Objects
 date: 2015-11-20 13:15:00 -0800
-categories: Unity C#
 ---
 
 Don't use `if (obj != null)` on a `GameObject`, `Texture2D`, `Sprite`, or any other `UnityEngine.Object` without understanding when `obj == null` doesn't mean `obj` is acctually null.
