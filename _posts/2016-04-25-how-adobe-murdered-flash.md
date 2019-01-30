@@ -2,6 +2,7 @@
 layout: post
 title: How Adobe Murdered Flash
 date: 2016-04-25 00:26:00 -0800
+redirect_from: /how-adobe-murdered-flash/
 ---
 
 Flash has been dead for a while. I moved on a long time ago, but back in it's day I was a happy specialist in AS3 development. Flash used to be something special.
